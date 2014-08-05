@@ -1,0 +1,35 @@
+<configuration>
+  <configSections>
+    <section name="log" type="Miracle.Diagnostics.Logging.ConfigSectionHandler, Miracle.Diagnostics" />
+    <section name="mail" type="Miracle.Diagnostics.Mail.ConfigSectionHandler, Miracle.Diagnostics" />
+  </configSections>
+
+  <log>
+    <rule active="true" minseverity="Information" type="Miracle.Diagnostics.Logging.XmlLogFile, Miracle.Diagnostics" param="~/Log/MyApplication.{0:yyyyMMdd}.Log.xml" />
+    <rule active="false" minseverity="Error" type="Miracle.Diagnostics.Mail.MailLog, Miracle.Diagnostics" param="Error.xml" />
+  </log>
+
+  <mail enabled="false" log="false">
+    <server>mysmtpserver</server>
+    <encoding>UTF-8</encoding>
+    <from>noreply@mydomain.com</from>
+    <to>recipient1@mydomain.com, recipient2@mydomain.com</to>
+    <subject>
+      Error occured in application (%COMPUTERNAME%)
+    </subject>
+    <body>${Message}</body>
+  </mail>
+
+  <system.web>
+    <httpModules>
+      <add name="ErrorLogModule" type="Miracle.Diagnostics.Logging.Web.ErrorLogModule, Miracle.Diagnostics" />
+    </httpModules>
+
+    <webServices>
+      <soapExtensionTypes>
+        <add type="Miracle.Diagnostics.Log.Soap.SoapExceptionLogExtension, Miracle.Diagnostics" priority="1" group="Low"/>
+        <add type="Miracle.Diagnostics.Soap.SoapTraceExtension, Miracle.Diagnostics" priority="1" group="Low"/>
+      </soapExtensionTypes>
+    </webServices>
+  </system.web>
+</configuration>

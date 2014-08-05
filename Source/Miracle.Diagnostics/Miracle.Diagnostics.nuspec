@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <projectUrl>https://github.com/PolarbearDK/Miracle.Diagnostics</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Initial version.</releaseNotes>
+    <copyright>Copyright 2008-2014</copyright>
+    <tags>log logging unobtrusive error exception nested xml</tags>
+    <dependencies>
+      <dependency id="Miracle.Macros" version="4.0.0.2" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="content\*.transform" target="content" />
+  </files>
+</package>

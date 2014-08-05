@@ -1,0 +1,23 @@
+<configuration>
+  <configSections>
+    <section name="log" type="Miracle.Diagnostics.Logging.ConfigSectionHandler, Miracle.Diagnostics" />
+    <section name="mail" type="Miracle.Diagnostics.Mail.ConfigSectionHandler, Miracle.Diagnostics" />
+  </configSections>
+
+  <log>
+    <rule active="true" minseverity="Debug" type="Miracle.Diagnostics.Logging.ConsoleLog, Miracle.Diagnostics" param="Log: ${TimeStamp:HH:mm:ss} ${Severity} ${Message}"/>
+    <rule active="true" minseverity="Information" type="Miracle.Diagnostics.Logging.XmlLogFile, Miracle.Diagnostics" param="%USERPROFILE%\MyApplication.{0:yyyyMMdd}.Log.xml" />
+    <rule active="false" minseverity="Error" type="Miracle.Diagnostics.Mail.MailLog, Miracle.Diagnostics" param="Error.xml" />
+  </log>
+
+  <mail enabled="false" log="false">
+    <server>mysmtpserver</server>
+    <encoding>UTF-8</encoding>
+    <from>noreply@mydomain.com</from>
+    <to>recipient1@mydomain.com, recipient2@mydomain.com</to>
+    <subject>
+      Error occured in application (%COMPUTERNAME%)
+    </subject>
+    <body>${Message}</body>
+  </mail>
+</configuration>
