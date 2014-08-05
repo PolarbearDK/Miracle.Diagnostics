@@ -25,7 +25,7 @@ or
 Log.Error(ex, "My custom message");
 ````
 
-Log custom information tailored directly to your application (Inherit from ILogEntry):
+Log custom information tailored directly to your application (implement ILogEntry, or inherit from existing LogEntry classes):
 ````
 Log.Add(new ExceptionLogEntry(SeverityEnum.Error, ex));
 Log.Add(new AuditLogEntry(SeverityEnum.Information, userName, area));
