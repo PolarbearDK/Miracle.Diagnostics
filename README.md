@@ -11,22 +11,21 @@ Simple logging framework.
 NuGet package includes config settings for console and ASP.NET.
 
 Log directly from code:
-````
+```csharp
 Log.Debug("Hello world");
 Log.Information("Hello world {0}","using composite formatting");
 Log.Warning("Hello world warning");
 Log.Error("Hello world error");
 Log.Fatal("Hello world fatal");
-````
+```
 Log applications errors with all exception information:
-````
+```csharp
 Log.Error(ex);
-or
 Log.Error(ex, "My custom message");
-````
+```
 
 Log custom information tailored directly to your application (implement ILogEntry, or inherit from existing LogEntry classes):
-````
+```csharp
 Log.Add(new ExceptionLogEntry(SeverityEnum.Error, ex));
 Log.Add(new AuditLogEntry(SeverityEnum.Information, userName, area));
-````
+```
