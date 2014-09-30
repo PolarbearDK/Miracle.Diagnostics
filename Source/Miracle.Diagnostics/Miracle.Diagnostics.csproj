@@ -19,7 +19,6 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -44,31 +43,68 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;;NET40</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Debug\Miracle.Diagnostics.XML</DocumentationFile>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release 3.5|AnyCPU' ">
+    <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <OutputPath>bin\Release\net35</OutputPath>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <DefineConstants>TRACE;NET35</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DebugSymbols>true</DebugSymbols>
-    <DocumentationFile>bin\Release\Miracle.Diagnostics.XML</DocumentationFile>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\Release\net35\Miracle.Diagnostics.XML</DocumentationFile>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="Miracle.Macros, Version=4.0.0.2, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Miracle.Macros.4.0.0.2\lib\net40\Miracle.Macros.dll</HintPath>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release 4.0|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\net4</OutputPath>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <DefineConstants>TRACE;NET40</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\Release\net4\Miracle.Diagnostics.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release 4.5|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\net45</OutputPath>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <DefineConstants>TRACE;NET45</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\Release\net45\Miracle.Diagnostics.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <Reference Include="Miracle.Macros">
+      <HintPath>..\packages\Miracle.Macros.4.0.0.3\lib\net4\Miracle.Macros.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'Release 3.5|AnyCPU' ">
+    <Reference Include="Miracle.Macros">
+      <HintPath>..\packages\Miracle.Macros.4.0.0.3\lib\net35\Miracle.Macros.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'Release 4.0|AnyCPU' ">
+    <Reference Include="Miracle.Macros">
+      <HintPath>..\packages\Miracle.Macros.4.0.0.3\lib\net4\Miracle.Macros.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'Release 4.5|AnyCPU' ">
+    <Reference Include="Miracle.Macros">
+      <HintPath>..\packages\Miracle.Macros.4.0.0.3\lib\net45\Miracle.Macros.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml" />
@@ -107,23 +143,6 @@
     <Compile Include="Soap\XmlTraceFile.cs" />
   </ItemGroup>
   <ItemGroup>
-    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
-      <Visible>False</Visible>
-      <ProductName>Windows Installer 3.1</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
@@ -134,11 +153,20 @@
     </PropertyGroup>
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
   </Target>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
   <Target Name="AfterBuild">
+    <!-- Load up the information from the assembly -->
+    <GetAssemblyIdentity AssemblyFiles="$(OutputPath)$(AssemblyName).dll">
+      <Output TaskParameter="Assemblies" ItemName="OutputAssemblyInfo" />
+    </GetAssemblyIdentity>
+    <Message Text="Info: %(OutputAssemblyInfo.Version)" />
   </Target>
-  -->
+  <Target Name="Package">
+    <!-- Ensure the Package directory exists for this project -->
+    <RemoveDir Directories="NuGet" />
+    <MakeDir Directories="NuGet" />
+    <!-- Package the project -->
+    <Exec WorkingDirectory="$(BuildDir)" Command="..\..\NuGet\NuGet.exe pack -Verbosity detailed -OutputDir &quot;NuGet&quot; -Version %(OutputAssemblyInfo.Version) -Properties &quot;Configuration=$(Configuration)&quot;" />
+  </Target>
 </Project>

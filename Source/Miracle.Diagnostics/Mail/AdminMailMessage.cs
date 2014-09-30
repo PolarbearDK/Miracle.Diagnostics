@@ -36,7 +36,11 @@ namespace Miracle.Diagnostics.Mail
 			if (config.To != null) To.Add(config.To);
 			if (config.CC != null) CC.Add(config.CC);
 			if (config.Bcc != null) Bcc.Add(config.Bcc);
-			if (config.ReplyTo != null) ReplyToList.Add(config.ReplyTo);
+#if NET35
+            if (config.ReplyTo != null) ReplyTo = new MailAddress(config.ReplyTo); 
+#else
+            if (config.ReplyTo != null) ReplyToList.Add(config.ReplyTo);
+#endif
 			if (config.Subject != null) Subject = config.Subject;
 			if (config.Body != null) Body = config.Body;
 		}

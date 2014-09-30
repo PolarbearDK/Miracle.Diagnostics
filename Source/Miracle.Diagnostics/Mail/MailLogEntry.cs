@@ -25,15 +25,8 @@ namespace Miracle.Diagnostics.Mail
         /// <param name="mailMessage">Mail message to be logged.</param>
         /// <returns>An initialized instance of a MailLogEntry.</returns>
         public MailLogEntry(SeverityEnum severity, string message, MailMessage mailMessage)
-            : base(severity, message, null)
+            : this(severity, message, mailMessage, null)
         {
-            From = Format(mailMessage.From);
-            To = Format(mailMessage.To);
-            Cc = Format(mailMessage.CC);
-            Bcc = Format(mailMessage.Bcc);
-            ReplyTo = Format(mailMessage.ReplyToList);
-            Subject = Format(mailMessage.Subject);
-            Body = Format(mailMessage.Body);
         }
 
         /// <summary>
@@ -51,8 +44,12 @@ namespace Miracle.Diagnostics.Mail
 			To = Format(mailMessage.To);
 			Cc = Format(mailMessage.CC);
 			Bcc = Format(mailMessage.Bcc);
+#if NET35
+            ReplyTo = Format(mailMessage.ReplyTo);
+#else
 			ReplyTo = Format(mailMessage.ReplyToList);
-			Subject = Format(mailMessage.Subject);
+#endif
+            Subject = Format(mailMessage.Subject);
 			Body = Format(mailMessage.Body);
 		}
 
