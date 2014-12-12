@@ -1,3 +1,5 @@
+#if !NET40Client 
+
 using System;
 using System.Configuration;
 using System.IO;
@@ -169,3 +171,5 @@ namespace Miracle.Diagnostics.Soap
 		}
 	}
 }
+
+#endif

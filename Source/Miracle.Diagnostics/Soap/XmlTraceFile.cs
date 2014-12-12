@@ -1,3 +1,5 @@
+#if !NET40Client 
+
 using System;
 using System.IO;
 using System.Text;
@@ -262,3 +264,5 @@ namespace Miracle.Diagnostics.Soap
 		#endregion
 	}
 }
+
+#endif

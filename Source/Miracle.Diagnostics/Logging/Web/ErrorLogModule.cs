@@ -1,3 +1,5 @@
+#if !NET40Client 
+
 using System;
 using System.Web;
 
@@ -37,3 +39,5 @@ namespace Miracle.Diagnostics.Logging.Web
 		}
 	}
 }
+
+#endif

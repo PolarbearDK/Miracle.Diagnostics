@@ -1,3 +1,5 @@
+#if !NET40Client 
+
 using System;
 using System.Collections.Specialized;
 using System.Web;
@@ -198,3 +200,5 @@ namespace Miracle.Diagnostics.Logging.Web
 	    #endregion
 	}
 }
+
+#endif

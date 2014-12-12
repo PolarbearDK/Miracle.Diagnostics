@@ -1,3 +1,5 @@
+#if !NET40Client 
+
 using System.Configuration;
 using System.Xml;
 using System.Xml.Serialization;
@@ -12,3 +14,5 @@ namespace Miracle.Diagnostics.Soap
 	{
 	}
 }
+
+#endif

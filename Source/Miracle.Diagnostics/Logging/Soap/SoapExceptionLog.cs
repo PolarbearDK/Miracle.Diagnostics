@@ -1,3 +1,5 @@
+#if !NET40Client 
+
 using System;
 using System.Web.Services.Protocols;
 
@@ -106,3 +108,5 @@ namespace Miracle.Diagnostics.Logging.Soap
 		public override int Priority { get; set; }
 	}
 }
+
+#endif

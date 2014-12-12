@@ -2,7 +2,9 @@ using System;
 using System.IO;
 using System.Text;
 using System.Threading;
+#if !NET40Client 
 using System.Web;
+#endif
 using System.Xml;
 using System.Xml.Serialization;
 using Miracle.Macros;
@@ -17,7 +19,9 @@ namespace Miracle.Diagnostics.Logging
 		private string _logFileName;
 		private Encoding _encoding = Encoding.UTF8;
 		private string _rootElement = "Log";
+#if !NET40Client 
 		private static HttpServerUtility _server;
+#endif
 
 	    /// <summary>
 		/// Empty constructor. Log file must be opened manually using the open method.
@@ -95,6 +99,7 @@ namespace Miracle.Diagnostics.Logging
 			{
 				if (string.IsNullOrEmpty(value)) throw new ApplicationException("Invalid filename.");
 
+#if !NET40Client 
 				int splitPoint = value.LastIndexOf('/');
 
 				if (HttpContext.Current != null)
@@ -125,6 +130,7 @@ namespace Miracle.Diagnostics.Logging
 					}
 				}
 				else
+#endif
 					_logFileName = value;
 			}
 		}

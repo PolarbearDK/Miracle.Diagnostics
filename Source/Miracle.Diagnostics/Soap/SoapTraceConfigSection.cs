@@ -1,3 +1,5 @@
+#if !NET40Client 
+
 using System;
 using System.Xml.Serialization;
 
@@ -14,3 +16,5 @@ namespace Miracle.Diagnostics.Soap
 		[XmlAttribute("filename")] public string Filename;
 	}
 }
+
+#endif

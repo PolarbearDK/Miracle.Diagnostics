@@ -1,3 +1,5 @@
+#if !NET40Client 
+
 using System;
 using System.Web.Services.Protocols;
 using System.Xml.Serialization;
@@ -134,3 +136,5 @@ namespace Miracle.Diagnostics.Logging.Soap
 		#endregion
 	}
 }
+
+#endif
