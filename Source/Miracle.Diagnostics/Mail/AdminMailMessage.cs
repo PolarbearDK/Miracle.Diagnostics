@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Configuration;
 using System.Net.Mail;
 using System.Text;
@@ -65,6 +65,7 @@ namespace Miracle.Diagnostics.Mail
 				var client = new SmtpClient();
 				base.From = new MailAddress(From);
 				if (config.Server != null) client.Host = config.Server;
+				if (!string.IsNullOrEmpty(config.Username)) client.Credentials = new System.Net.NetworkCredential(config.Username, config.Password, config.Domain);
 
 				try
 				{

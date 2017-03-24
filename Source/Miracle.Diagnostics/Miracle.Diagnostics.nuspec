@@ -9,8 +9,8 @@
     <projectUrl>https://github.com/PolarbearDK/Miracle.Diagnostics</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-	<releaseNotes>Add target for .NET 4.0 client profile</releaseNotes>
-    <copyright>Copyright 2008-2014</copyright>
+	<releaseNotes>Add mail credentials</releaseNotes>
+    <copyright>Copyright 2008-2017</copyright>
     <tags>log logging unobtrusive error exception nested xml</tags>
     <dependencies>
       <dependency id="Miracle.Macros" version="4.0.0.3" />

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Xml.Serialization;
 
 namespace Miracle.Diagnostics.Mail
@@ -38,6 +38,18 @@ namespace Miracle.Diagnostics.Mail
 		/// <summary>E-mail server</summary>
 		[XmlElement("server")]
 		public string Server { get; set; }
+
+		/// <summary>Credentials for server</summary>
+		[XmlElement("username")]
+		public string Username { get; set; }
+
+		/// <summary>Credentials for server</summary>
+		[XmlElement("password")]
+		public string Password { get; set; }
+
+		/// <summary>Credentials for server</summary>
+		[XmlElement("domain")]
+		public string Domain { get; set; }
 
 		/// <summary/>
 		[XmlElement("encoding")]
